@@ -1,0 +1,40 @@
+
+<!-- <p-growl width="300" [(value)]="msgs"></p-growl> -->
+
+<div class="container">
+    <!-- <img src="notes-6399119__340.jpg" style="width:100%;"> -->
+    <div class="topbar"style="height:5%;width:5%;padding:2%">
+        <a routerLink="/" class="topbar-logo" style="height:10%;width:20%">
+            <img class="logo" src="notes-6399119__340.jpg" style="border: 0 none;width: 1000px;">
+        </a>
+      </div>
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-lg-12" style="padding-left:10%;">
+      <div class="ui-g-12">
+          <!-- <span style="font-size:20px;float:left;padding-top:10px;color:white">INJURY ANALYSIS - HUMAN ELEMENT</span> -->
+        </div>
+    <div class="ui-g-5 ui-sm-12" style="display:flex">
+           <div class="ui-g-12" style="display:flex">
+             <input  type="text"  (keyup.enter)="login()" placeholder="Username" pInputText [(ngModel)]="username" name="username" />
+           </div>
+           <div class="ui-g-12" style="display:flex;width:10px"></div>
+           <div class="ui-g-12" style="display:flex">
+             <input  type="password" (keyup.enter)="login()"  placeholder="Password" pInputText [(ngModel)]="password" name="password" />
+           </div>
+           <div class="ui-g-12" style="display:flex;width:10px"></div>
+           <div class="ui-g-12" style="padding-top:20px">
+             <button  class="button-63" role="button"  id="login"   (click)="login()" >   Login  </button>
+           </div>
+           <mat-error *ngIf="showError">Username or Password is  incorrect</mat-error>
+           <!-- <div class="ui-g-12" style="padding-top:10px;color:white;">
+            Copyright Teekay 2018 |Ver:1.5|
+            </div> -->
+           <!-- <div class="ui-g-12">
+            <a [routerLink]="['/forgotpassword']"><span style="color:white">Forgot Password?</span></a>
+           </div> -->
+
+         </div>
+      </div>
+
+             </div>
+</div>

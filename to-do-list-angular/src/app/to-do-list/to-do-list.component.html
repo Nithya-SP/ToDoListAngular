@@ -1,0 +1,91 @@
+
+<div class="ui-g-5 ui-sm-12" style="display:flex">
+       <div class="ui-g-12" style="display:flex;width:2000px">
+
+       </div>
+       <div class="ui-g-12" style="display:flex;width:10px"></div>
+       <div class="ui-g-12" style="display:flex">
+
+       </div>
+       <div class="ui-g-12" style="display:flex;width:10px"></div>
+
+       <div class="ui-g-12" style="padding-top:20px;    padding-right: 220px;">
+         <button  class="button-34" role="button" id="Add New Task"   (click)="logout()" style="    width: 100px;
+    height: 40px;">  Logout </button>
+       </div>
+     </div>
+<h2> Add New Task</h2>
+<div class="ui-g-5 ui-sm-12" style="display:flex">
+       <div class="ui-g-12" style="display: flex;
+    width: 166px;
+    height: 40px;">
+         <input  type="text" placeholder="Task Name" pInputText [(ngModel)]="taskName" name="taskName" />
+       </div>
+       <div class="ui-g-12" style="display:flex;width:10px"></div>
+       <div class="ui-g-12" style="display: flex;
+    width: 166px;
+    height: 40px;">
+         <input  type="text" placeholder="Task Description" pInputText [(ngModel)]="description" name="description" />
+       </div>
+       <div class="ui-g-12" style="display:flex;width:10px"></div>
+
+       <div class="ui-g-12">
+         <button  class="button-63" role="button" id="Add New Task"   (click)="addTask()" style="width:70px;height:25px">   Submit </button>
+       </div>
+
+     </div>
+
+     <h2>Tasks</h2>
+     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="completed">
+  <th mat-header-cell *matHeaderCellDef></th>
+  <td mat-cell *matCellDef="let element; index as i;">
+    <mat-checkbox [(ngModel)]="element.completed" (change)="onCheckBoxValueChange(element)"></mat-checkbox>
+  </td>
+</ng-container>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef style="color:blue;font-size: 18px;"> Task ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="taskName">
+    <th mat-header-cell *matHeaderCellDef style="font-size: 18px;color:blue;"> Task Name </th>
+    <td mat-cell *matCellDef="let element"> <input style="font-size: 18px;" [(ngModel)]="element.taskName" [disabled]=disableTextbox type="text" class="form-control" [value]="element.taskName"> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="taskDetails">
+    <th mat-header-cell *matHeaderCellDef style="font-size: 18px;color:blue"> Task Description </th>
+    <td mat-cell *matCellDef="let element"> <input style="font-size: 18px;" [(ngModel)]="element.taskDetails"[disabled]=disableTextbox type="text" class="form-control" [value]="element.taskDetails"></td>
+  </ng-container>
+
+  <ng-container matColumnDef="taskCreatedDate">
+    <th mat-header-cell *matHeaderCellDef style="font-size: 18px;color:blue"> Created Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.taskCreatedDate | date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="taskUpdatedDate" style="font-size: 18px;color:blue">
+    <th mat-header-cell *matHeaderCellDef style="color:blue"> Updated Date </th>
+    <td mat-cell *matCellDef="let element" > {{element.taskUpdatedDate | date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef style="font-size: 18px;color:blue">Actions </th>
+    <td mat-cell *matCellDef="let row" style="display: flex;
+    padding-top: 31px;    padding-bottom: 25px;color:blue" >
+      <button mat-icon-button matTooltip="Click to Edit" class="button-21" role="button" color="primary" *ngIf="this.editVisible" (click)="onEdit(row)" >
+          <mat-icon aria-label="Edit">Edit</mat-icon>
+        </button>
+        <div class="ui-g-12" style="display:flex;width:10px"></div>
+        <button mat-icon-button matTooltip="Click to Update" class="button-21" role="button" color="warn" *ngIf="this.updateVisible" (click)="onUpdate(row)">
+            <mat-icon aria-label="Delete">Update</mat-icon>
+          </button>
+
+        <div class="ui-g-12" style="display:flex;width:10px"></div>
+        <button mat-icon-button matTooltip="Click to Delete" class="button-21" role="button" color="warn" (click)="onDelete(row)">
+            <mat-icon aria-label="Delete">Delete</mat-icon>
+          </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="selection.toggle(row)">
+  </tr>
+</table>
