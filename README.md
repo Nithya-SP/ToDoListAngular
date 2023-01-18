@@ -28,6 +28,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Run the Application in Locally
 
-Use command "npm install" command to install the node modules
-Use the command "ng serve" to start the application 
+Use command "npm install" command to install the node modules <br>
+Use the command "ng serve" to start the application <br>
 The application will be accessible in "localhost:4200"
